@@ -1,0 +1,211 @@
+/* --- Reset básico y configuración global --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #222;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- Header --- */
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  position: sticky; /* --- fija la posicio del elemento --- */
+  top: 0;
+  z-index: 100; /* --- controlador que no se encimen --- */
+}
+
+.header-container {
+  display: flex; /* --- flow layout se acomoda en fila --- */
+  align-items: center;
+  justify-content: space-between; /* --- acomoda el lozo izquierda y el boton menu deracha --- */
+  padding: 1rem;
+}
+
+.logo img {
+  height: 40px; /* --- altura --- */
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none; /* --- elimina el diseño --- */
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #222;
+}
+
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+.nav-menu.active {
+  display: block;
+}
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-menu li a {
+  display: block;
+  padding: 1rem;
+  border-top: 1px solid #eee;
+}
+
+/* --- Hero --- */
+.hero {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 1.8rem;  /* --- cambio de px a rem --- */
+  margin-bottom: 0.75rem;
+}
+
+.hero p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.btn-cta {
+  display: inline-block;
+  background-color: #222;
+  color: #fff;
+  padding: 0.9rem 2rem;
+  border-radius: 6px; /* --- rendondea el diseño y recntangulo recto --- */
+  font-weight: bold;
+}
+
+/* --- Servicios --- */
+.servicios {
+  padding: 3rem 1.5rem;  /* --- Se uso el mismo espacio en cada seccion igual en rem --- */
+}
+
+.servicios h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.servicio-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.servicio-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* --- en modo retrato en las fotos de iamgenes mas grandes  y respeta las mas grandes --- */
+}
+
+.servicio-card h3 {
+  font-size: 1.2rem;
+  padding: 1rem 1rem 0.5rem;
+}
+
+.servicio-card p {
+  color: #555;
+  padding: 0 1rem 1rem;
+}
+
+/* --- Galería --- */
+.galeria {
+  padding: 3rem 1.5rem;
+}
+
+.galeria h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.galeria-grid {
+  display: grid;  /* --- matrice de 2,2 podemos modificarla a 1 fila de imagenes con flow --- */
+  grid-template-columns: repeat(2, 1fr); /* --- grid-template-columns: 1fr por si quieres 1 columna--- */
+  gap: 0.75rem; /* --- espacios, margenes --- */
+}
+
+.galeria-grid img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover; /* --- para iamgenes no sobresalgan --- */
+  border-radius: 6px;
+}
+
+/* --- Testimonios --- */
+.testimonios {
+  padding: 3rem 1.5rem;
+  background-color: #f9f9f9;
+}
+
+.testimonios h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.testimonio-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.testimonio-card blockquote {
+  font-size: 1rem;
+  font-style: italic;
+  color: #333;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.testimonio-card blockquote::before {
+  content: "“";
+  font-size: 2.5rem;
+  color: #ccc;
+  position: absolute;
+  left: -0.5rem;
+  top: -0.5rem;
+  font-style: normal;
+}
+
+.testimonio-card .autor {
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: right;
+  color: #555;
+}
+
