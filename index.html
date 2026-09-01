@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es"> <!-- idioma en español, lo detecta el navegador -->
+<head>  
+
+  <meta charset="UTF-8"> <!-- para agregar el conjunto de caracteres -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rancho Catarina</title> <!-- titulo  -->
+  <link rel="stylesheet" href="styles.css">  <!-- archivo de los estilos en css -->
+
+</head> 
+
+<body> <!-- cuerpo del html -->
+
+  <header>
+  <div class="header-container"> <!-- caja visual -->
+    <a href="index.html" class="logo"> <!-- etiqueta ancla -->
+      <img src="logo.png" alt="Rancho Catarina Logo"> <!-- nombre de la imagen   -->
+    </a>
+
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"> <!-- BOTON DE hamburgesa -->
+      <span></span>
+      <span></span> <!-- iconos de la hambuersa -->
+      <span></span>
+    </button>
+
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>  <!-- opciones -->
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+ <main>
+  <section class="hero" id="inicio">   <!-- se usa el id de la hambuersa que reclaro en header -->
+    <h1>Título principal de tu página</h1>
+    <p>Una breve descripción de lo que ofreces.</p>
+    <a href="#contacto" class="btn-cta">Contáctanos</a> <!-- botón de llamada a la acción -->
+  </section>
+
+  <section class="servicios" id="servicios"> <!-- se usa el id de la hambuersa que reclaro en header -->
+    <h2>Nuestros servicios</h2>
+
+    <article class="servicio-card"> <!-- tarjeta de servicio -->
+      <img src="servicio1.jpg" alt="Descripción del servicio 1">
+      <h3>Servicio 1</h3>
+      <p>Descripción breve del servicio.</p>
+    </article>
+
+    <article class="servicio-card">
+      <img src="servicio2.jpg" alt="Descripción del servicio 2">
+      <h3>Servicio 2</h3>
+      <p>Descripción breve del servicio.</p>
+    </article>
+  </section>
+      <section class="galeria" id="galeria"> <!-- seccion de galeria de imagenes -->
+      <h2>Galería</h2>
+
+      <div class="galeria-grid"> <!-- caja visual para acomodar las imagenes en cuadricula -->
+        <img src="galeria1.jpg" alt="Vista del rancho Catarina 1">
+        <img src="galeria2.jpg" alt="Vista del rancho Catarina 2">
+        <img src="galeria3.jpg" alt="Vista del rancho Catarina 3">
+        <img src="galeria4.jpg" alt="Vista del rancho Catarina 4">
+      </div>
+    </section>
+
+    <section class="testimonios" id="testimonios"> <!-- seccion de opiniones de clientes -->
+      <h2>Lo que dicen nuestros clientes</h2>
+
+      <article class="testimonio-card"> <!-- cada testimonio es contenido independiente, por eso article -->
+        <blockquote> <!-- etiqueta para citas/opiniones de alguien mas -->
+          <p>Excelente experiencia, el lugar es hermoso y el servicio de primera.</p>
+        </blockquote>
+        <p class="autor">— Juan Pérez</p> <!-- quien dio la opinion -->
+      </article>
+
+      <article class="testimonio-card">
+        <blockquote>
+          <p>Recomendado al cien por ciento, volveremos pronto.</p>
+        </blockquote>
+        <p class="autor">— María López</p>
+      </article>
+    </section>
+</main>
+
+ <footer id="contacto">  <!-- seccion y la id de contacto -->
+  <section class="contacto">
+    <h2>Contáctanos</h2> <!-- etiqueta h2-->
+
+    <address> <!-- etiqeta de contactos -->
+      <p>
+        <a href="mailto:correo@tudominio.com">correo@tudominio.com</a> <!-- mailto  abre el corre con un click-->
+      </p>
+      <p>
+        <a href="tel:+529511234567">951 123 4567</a>  <!--tel abre el telefono con un click-->
+      </p>
+      <p>Oaxaca de Juárez, Oaxaca</p>
+    </address>
+  </section>
+
+  <section class="redes"> <!-- enlace de la sección de redes sociales -->
+    <a href="https://instagram.com/tuusuario" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://facebook.com/tuusuario" target="_blank" rel="noopener">Facebook</a>
+  </section>
+
+  <p class="copy">&copy; 2026 rancho catarina Todos los derechos reservados.</p>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
