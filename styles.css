@@ -122,6 +122,7 @@ header {
   margin-bottom: 2rem;
 }
 
+
 .servicio-card {
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -302,4 +303,33 @@ header {
     max-width: 1100px;
     margin: 0 auto;
   }
+}
+
+:root {
+  --color-bg: #F7F4EC;      /* crema cálido, no blanco puro */
+  --color-primary: #445E3C; /* verde olivo/pasto */
+  --color-secondary: #8B5E34; /* marrón tierra */
+  --color-accent: #C9A227;  /* dorado, mismo tono que el logo */
+  --color-text: #2B2A26;    /* casi negro, con calidez */
+  --color-light: #FFFFFF;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.btn-cta {
+  background-color: var(--color-accent);
+  color: var(--color-text); /* texto oscuro sobre dorado se lee mejor que blanco sobre dorado */
+}
+
+.testimonios {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+}
+
+.testimonios .autor {
+  color: var(--color-light);
+  opacity: 0.85;
 }
