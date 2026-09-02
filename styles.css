@@ -1,3 +1,13 @@
+/* --- Paleta de colores (identidad propia, contrasta con el logo dorado/gris) --- */
+:root {
+  --color-bg: #F7F4EC;      /* crema cálido, no blanco puro */
+  --color-primary: #445E3C; /* verde olivo/pasto */
+  --color-secondary: #8B5E34; /* marrón tierra */
+  --color-accent: #C9A227;  /* dorado, mismo tono que el logo */
+  --color-text: #2B2A26;    /* casi negro, con calidez */
+  --color-light: #FFFFFF;
+}
+
 /* --- Reset básico y configuración global --- */
 * {
   margin: 0;
@@ -8,7 +18,8 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.5;
-  color: #222;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
 img {
@@ -23,7 +34,7 @@ a {
 
 /* --- Header --- */
 header {
-  background-color: #fff;
+  background-color: var(--color-light);
   border-bottom: 1px solid #eee;
   position: sticky; /* --- fija la posicio del elemento --- */
   top: 0;
@@ -34,8 +45,12 @@ header {
   display: flex; /* --- flow layout se acomoda en fila --- */
   align-items: center;
   justify-content: space-between; /* --- acomoda el lozo izquierda y el boton menu deracha --- */
-  padding:0.5rem  1rem;
-  height: 65px; /* --- altura del header --- */
+  padding: 0.5rem 1rem;
+  /* Nota: quité el "height: 65px" fijo que tenías — tu logo mide 95px de alto,
+     y con una altura fija menor que el contenido, el logo se salía del header
+     (overflow) y el contenido de abajo lo tapaba parcialmente al hacer scroll,
+     por ser sticky. Con altura automática (solo el padding define el alto),
+     el header siempre crece lo necesario para lo que tenga adentro. */
 }
 
 
@@ -104,8 +119,8 @@ header {
 
 .btn-cta {
   display: inline-block;
-  background-color: #222;
-  color: #fff;
+  background-color: var(--color-accent);
+  color: var(--color-text); /* texto oscuro sobre dorado se lee mejor que blanco sobre dorado */
   padding: 0.9rem 2rem;
   border-radius: 6px; /* --- rendondea el diseño y recntangulo recto --- */
   font-weight: bold;
@@ -114,20 +129,21 @@ header {
 /* --- Servicios --- */
 .servicios {
   padding: 3rem 1.5rem;  /* --- Se uso el mismo espacio en cada seccion igual en rem --- */
+  display: grid;
+  grid-template-columns: 1fr; /* --- en móvil, 1 columna --- */
+  gap: 1.5rem;
 }
 
 .servicios h2 {
+  grid-column: 1 / -1; /* el título ocupa las columnas completas, no una tarjeta */
   font-size: 1.5rem;
   text-align: center;
-  margin-bottom: 2rem;
 }
-
 
 .servicio-card {
   background-color: #f9f9f9;
   border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 1.5rem;
 }
 
 .servicio-card img {
@@ -139,6 +155,7 @@ header {
 .servicio-card h3 {
   font-size: 1.2rem;
   padding: 1rem 1rem 0.5rem;
+  color: var(--color-primary);
 }
 
 .servicio-card p {
@@ -168,12 +185,83 @@ header {
   height: 130px;
   object-fit: cover; /* --- para iamgenes no sobresalgan --- */
   border-radius: 6px;
+  cursor: pointer; /* le indica al usuario que la imagen se puede tocar/hacer clic */
+}
+
+/* --- Lightbox: agranda la imagen de la galería a pantalla completa --- */
+.lightbox {
+  display: none; /* oculto hasta que se le agrega .active */
+  position: fixed;
+  inset: 0; /* equivale a top:0; right:0; bottom:0; left:0; */
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000; /* por encima de todo, incluido el header sticky */
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh; /* nunca más alto que el 90% de la pantalla visible */
+  object-fit: contain; /* aquí sí queremos ver la foto completa, sin recortar */
+  touch-action: pinch-zoom; /* permite hacer zoom con los dedos sobre la imagen */
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--color-light);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* --- Video --- */
+.video {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  background-color: var(--color-secondary); /* marrón tierra: distingue esta franja de las demás */
+  color: var(--color-light);
+}
+
+.video h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.video-subtitle {
+  color: var(--color-light);
+  opacity: 0.85;
+  margin-bottom: 2rem;
+}
+
+.video-wrapper {
+  max-width: 850px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  /* sombra amplia y difusa: da sensación de que el reproductor "flota" sobre el fondo */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* --- Testimonios --- */
 .testimonios {
   padding: 3rem 1.5rem;
-  background-color: #f9f9f9;
+  background-color: var(--color-primary);
+  color: var(--color-light); /* fondo verde oscuro, texto claro para contraste */
 }
 
 .testimonios h2 {
@@ -183,7 +271,7 @@ header {
 }
 
 .testimonio-card {
-  background-color: #fff;
+  background-color: var(--color-light);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -192,7 +280,7 @@ header {
 .testimonio-card blockquote {
   font-size: 1rem;
   font-style: italic;
-  color: #333;
+  color: var(--color-text);
   position: relative;
   padding-left: 1.5rem;
 }
@@ -212,6 +300,72 @@ header {
   font-weight: bold;
   text-align: right;
   color: #555;
+}
+
+/* --- Contacto (footer) --- */
+footer {
+  background-color: var(--color-text); /* casi negro cálido: máximo contraste, cierra la página con fuerza */
+  color: var(--color-bg);
+  padding: 3rem 1.5rem 1.5rem;
+}
+
+.contacto h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent); /* dorado, mismo tono del logo, resalta sobre el fondo oscuro */
+}
+
+.contacto address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  font-style: normal; /* address por default viene en cursiva, aquí no la queremos */
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.contact-item a {
+  color: var(--color-bg);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0; /* evita que el ícono se achique si el texto junto a él es largo */
+  color: var(--color-accent); /* el ícono toma este color vía "currentColor" en el SVG */
+}
+
+.redes {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-bg);
+}
+
+.social-link:hover {
+  color: var(--color-accent);
+}
+
+.copy {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-bg);
+  opacity: 0.6;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* ============================
@@ -250,15 +404,9 @@ header {
     font-size: 1.2rem;
   }
 
-  /* --- Servicios: de columna a fila --- */
+  /* --- Servicios: de columna a 2 columnas --- */
   .servicios {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .servicio-card {
-    margin-bottom: 0;
   }
 
   /* --- Galería: más columnas --- */
@@ -276,6 +424,14 @@ header {
   .testimonio-card {
     margin-bottom: 0;
   }
+
+  /* --- Contacto: datos en fila en vez de columna --- */
+  .contacto address {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
 }
 
 /* ============================
@@ -288,7 +444,7 @@ header {
   }
 
   .servicios {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* las 4 tarjetas en una sola fila */
   }
 
   .galeria-grid {
@@ -297,39 +453,11 @@ header {
 
   .header-container,
   .hero,
+  .video,
   .servicios,
   .galeria,
   .testimonios {
     max-width: 1100px;
     margin: 0 auto;
   }
-}
-
-:root {
-  --color-bg: #F7F4EC;      /* crema cálido, no blanco puro */
-  --color-primary: #445E3C; /* verde olivo/pasto */
-  --color-secondary: #8B5E34; /* marrón tierra */
-  --color-accent: #C9A227;  /* dorado, mismo tono que el logo */
-  --color-text: #2B2A26;    /* casi negro, con calidez */
-  --color-light: #FFFFFF;
-}
-
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-}
-
-.btn-cta {
-  background-color: var(--color-accent);
-  color: var(--color-text); /* texto oscuro sobre dorado se lee mejor que blanco sobre dorado */
-}
-
-.testimonios {
-  background-color: var(--color-primary);
-  color: var(--color-light);
-}
-
-.testimonios .autor {
-  color: var(--color-light);
-  opacity: 0.85;
 }
