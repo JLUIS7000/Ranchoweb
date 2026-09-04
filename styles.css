@@ -73,6 +73,20 @@ header {
   width: 25px;
   height: 3px;
   background-color: #222;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* anima cualquier cambio de transform/opacity */
+}
+
+/* Cuando el botón tiene la clase "active" (menú abierto), las 3 líneas forman una X */
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg); /* baja y gira la línea de arriba */
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0; /* la línea de en medio desaparece */
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg); /* sube y gira la línea de abajo, en sentido contrario */
 }
 
 .nav-menu {
@@ -180,28 +194,42 @@ header {
   gap: 0.75rem; /* --- espacios, margenes --- */
 }
 
+.galeria-item {
+  border-radius: 6px;
+  overflow: hidden; /* recorta la imagen cuando crece en hover, para que no se salga de su celda */
+  cursor: pointer;
+}
+
 .galeria-grid img {
   width: 100%;
   height: 130px;
   object-fit: cover; /* --- para iamgenes no sobresalgan --- */
-  border-radius: 6px;
-  cursor: pointer; /* le indica al usuario que la imagen se puede tocar/hacer clic */
+  display: block;
+  transition: transform 0.35s ease; /* anima el zoom al pasar el mouse */
+}
+
+.galeria-item:hover img {
+  transform: scale(1.12); /* zoom suave, contenido por el overflow:hidden del padre */
 }
 
 /* --- Lightbox: agranda la imagen de la galería a pantalla completa --- */
 .lightbox {
-  display: none; /* oculto hasta que se le agrega .active */
   position: fixed;
   inset: 0; /* equivale a top:0; right:0; bottom:0; left:0; */
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 1000; /* por encima de todo, incluido el header sticky */
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden; /* además de invisible, lo saca de la navegación por teclado/lectores de pantalla */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .lightbox.active {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
 .lightbox img {
@@ -209,6 +237,12 @@ header {
   max-height: 90vh; /* nunca más alto que el 90% de la pantalla visible */
   object-fit: contain; /* aquí sí queremos ver la foto completa, sin recortar */
   touch-action: pinch-zoom; /* permite hacer zoom con los dedos sobre la imagen */
+  transform: scale(0.9); /* arranca un poco más chica... */
+  transition: transform 0.3s ease;
+}
+
+.lightbox.active img {
+  transform: scale(1); /* ...y crece a su tamaño real cuando aparece, dando sensación de "entrada" */
 }
 
 .lightbox-close {
