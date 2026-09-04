@@ -94,24 +94,48 @@
       <img loading="lazy" src="crias.webp" alt="Ganado ovino de alta calidad en Rancho Santa Catalina">
       <h3>Ganado Ovino </h3>
       <p>Criamos y seleccionamos cuidadosamente nuestro ganado en Santa María Atzompa, Oaxaca, bajo los más estrictos estándares de salud y bienestar animal, siempre con métodos completamente naturales y sostenibles, libres de aditivos artificiales.</p>
+      <button class="btn-ver-mas"
+        data-titulo="Ganado Ovino"
+        data-imagen="crias.webp"
+        data-texto="Criamos y seleccionamos cuidadosamente nuestro ganado en Santa María Atzompa, Oaxaca, bajo los más estrictos estándares de salud y bienestar animal. Trabajamos principalmente con dos razas: la Dorper, de origen sudafricano, reconocida por su rápido desarrollo y la calidad de su carne; y la Katahdin, una raza de pelo (sin lana), resistente y muy bien adaptada al clima de los Valles Centrales de Oaxaca. Cada animal recibe seguimiento individual de salud, con su calendario de vacunación y desparasitación al día, siempre con métodos naturales y sostenibles, libres de aditivos artificiales.">
+        Ver más
+      </button>
     </article>
 
     <article class="servicio-card">
       <img loading="lazy" src="cultivo.webp" alt="Alimento natural y balanceado para ganado">
       <h3>Alimento Natural y Balanceado</h3>
       <p>Producimos alimento de calidad premium para ganado en Santa María Atzompa, utilizando únicamente ingredientes cultivados y procesados localmente en Oaxaca, asegurando que todo sea completamente natural y libre de químicos.</p>
+      <button class="btn-ver-mas"
+        data-titulo="Alimento Natural y Balanceado"
+        data-imagen="cultivo.webp"
+        data-texto="Producimos alimento de calidad premium para nuestro ganado en Santa María Atzompa, utilizando únicamente ingredientes cultivados, cosechados y procesados localmente en Oaxaca. Todo el proceso, desde la siembra hasta el empacado en costales, se hace de forma natural, sin aditivos ni químicos, para asegurar que cada bulto de alimento sea igual de sano que el pasto de nuestras zonas verdes. Esto se refleja directamente en la salud y el desarrollo de cada borrego que criamos.">
+        Ver más
+      </button>
     </article>
 
     <article class="servicio-card">
       <img loading="lazy" src="capacitacion.webp" alt="Capacitación y asesoría técnica ganadera">
       <h3>Capacitación y Asesoría Técnica</h3>
       <p>Transferimos el conocimiento práctico y la experiencia de manos oaxaqueñas expertas para mejorar su propia operación ganadera. Ofrecemos programas de capacitación prácticos y directos en Santa María Atzompa.</p>
+      <button class="btn-ver-mas"
+        data-titulo="Capacitación y Asesoría Técnica"
+        data-imagen="capacitacion.webp"
+        data-texto="Transferimos el conocimiento práctico y la experiencia de manos oaxaqueñas expertas para que usted mejore su propia operación ganadera. Ofrecemos programas de capacitación prácticos y directos en Santa María Atzompa, cubriendo desde el manejo diario del ganado y la nutrición, hasta la selección genética y el cuidado sanitario. La idea es sencilla: compartir lo que hemos aprendido en el campo, de la manera más clara y aplicable posible, sin complicaciones innecesarias.">
+        Ver más
+      </button>
     </article>
 
     <article class="servicio-card">
       <img loading="lazy" src="borregos.webp" alt="Genética de vanguardia en borregos">
       <h3>Nuestra Genética</h3>
       <p>No solo criamos borregos, le ponemos el corazón al campo. Nos enfocamos en trabajar la buena sangre de las razas Dorper y Katahdin, que destacan por dar muy buenas crías y adaptarse a todo. Con el trato de nuestra gente y un buen ojo para la cruza, logramos animales rústicos, bien hechos y de calidad comprobada; borregos sanos y criados de la manera más natural posible.</p>
+      <button class="btn-ver-mas"
+        data-titulo="Nuestra Genética"
+        data-imagen="borregos.webp"
+        data-texto="No solo criamos borregos, le ponemos el corazón al campo. Nos enfocamos en trabajar la buena sangre de las razas Dorper y Katahdin, que destacan por dar muy buenas crías y adaptarse a todo tipo de condiciones. Con el trato de nuestra gente y un buen ojo para la cruza, generación tras generación, logramos animales rústicos, bien hechos y de calidad comprobada: borregos sanos, fuertes y criados de la manera más natural posible, pensando siempre en mejorar la línea genética del rancho.">
+        Ver más
+      </button>
     </article>
   </section>
 
@@ -213,6 +237,16 @@
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" aria-label="Cerrar imagen">&times;</button>
     <img src="" alt="" id="lightbox-img">
+  </div>
+
+  <!-- panel de pantalla completa: se muestra al tocar "Ver más" en una tarjeta de servicio -->
+  <div class="servicio-modal" id="servicio-modal">
+    <button class="servicio-modal-close" aria-label="Cerrar">&times;</button>
+    <div class="servicio-modal-content">
+      <img src="" alt="" id="servicio-modal-imagen">
+      <h2 id="servicio-modal-titulo"></h2>
+      <p id="servicio-modal-texto"></p>
+    </div>
   </div>
 
   <script src="script.js"></script>

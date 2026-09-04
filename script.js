@@ -48,7 +48,49 @@ lightbox.addEventListener('click', (e) => {
   }
 });
 
-// --- Ubicación: coordenadas exactas del Rancho Santa Catalina (Google Maps) ---
+// --- "Ver más" de servicios: panel de pantalla completa ---
+const servicioModal = document.querySelector('#servicio-modal');
+const servicioModalTitulo = document.querySelector('#servicio-modal-titulo');
+const servicioModalImagen = document.querySelector('#servicio-modal-imagen');
+const servicioModalTexto = document.querySelector('#servicio-modal-texto');
+const servicioModalClose = document.querySelector('.servicio-modal-close');
+const botonesVerMas = document.querySelectorAll('.btn-ver-mas');
+
+botonesVerMas.forEach(boton => {
+  boton.addEventListener('click', () => {
+    // los datos vienen de los atributos data-* del propio botón, definidos en el HTML
+    servicioModalTitulo.textContent = boton.dataset.titulo;
+    servicioModalImagen.src = boton.dataset.imagen;
+    servicioModalImagen.alt = boton.dataset.titulo;
+    servicioModalTexto.textContent = boton.dataset.texto;
+
+    servicioModal.classList.add('active');
+    servicioModal.scrollTop = 0; // por si quedó a la mitad del scroll de una vez anterior
+    document.body.style.overflow = 'hidden'; // bloquea el scroll de fondo mientras el panel está abierto
+  });
+});
+
+function cerrarServicioModal() {
+  servicioModal.classList.remove('active');
+  document.body.style.overflow = ''; // regresa el scroll del fondo a la normalidad
+}
+
+servicioModalClose.addEventListener('click', cerrarServicioModal);
+
+// clic fuera del contenido (en el fondo) también cierra
+servicioModal.addEventListener('click', (e) => {
+  if (e.target === servicioModal) {
+    cerrarServicioModal();
+  }
+});
+
+// --- Cerrar el lightbox o el panel de servicios con la tecla Escape ---
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    cerrarLightbox();
+    cerrarServicioModal();
+  }
+});
 const ranchoCoords = [17.1041284, -96.781118];
 
 // El botón "Cómo llegar" no depende del mapa (es solo un link a Google Maps),
