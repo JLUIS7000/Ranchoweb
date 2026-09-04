@@ -354,6 +354,7 @@ header {
   border-radius: 8px;
   z-index: 1; /* el mapa maneja su propio z-index interno; esto evita que tape al header sticky */
   margin-bottom: 1.5rem;
+  background-color: #e5e0d3; /* se ve mientras Leaflet carga, en vez de un rectángulo blanco vacío */
 }
 
 /* --- Contacto (footer) --- */

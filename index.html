@@ -5,8 +5,49 @@
   <meta charset="UTF-8"> <!-- para agregar el conjunto de caracteres -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rancho Santa Catalina</title> <!-- titulo  -->
+
+  <!-- meta description: el texto que Google muestra en los resultados de búsqueda -->
+  <meta name="description" content="Rancho Santa Catalina, en Santa María Atzompa, Oaxaca. Criamos borregos Dorper y Katahdin con alimento natural, libre de químicos. Conócenos.">
+
+  <!-- Open Graph: cómo se ve la tarjeta al compartir el link en WhatsApp, Facebook, etc. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rancho Santa Catalina">
+  <meta property="og:description" content="Cría de borregos Dorper y Katahdin en Santa María Atzompa, Oaxaca. Alimento natural, libre de químicos.">
+  <meta property="og:image" content="ganado.webp"> <!-- TODO: reemplaza por la URL completa cuando tengas tu dominio, ej. https://tudominio.com/ganado.webp -->
+  <meta property="og:locale" content="es_MX">
+
+  <!-- favicon: ícono en la pestaña del navegador -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"> <!-- ícono al agregar el sitio a la pantalla de inicio en iPhone -->
+
   <link rel="stylesheet" href="styles.css">  <!-- archivo de los estilos en css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"> <!-- estilos del mapa (Leaflet) -->
+  <!-- Leaflet (CSS y JS del mapa) ya NO se carga aquí: se carga dinámicamente
+       desde script.js solo cuando el usuario está por llegar a la sección de
+       ubicación, para no gastar datos de más si nunca baja hasta ahí. -->
+
+  <!-- datos estructurados: le dicen a Google que esto es un negocio local, con su ubicación, teléfono y horario -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Rancho Santa Catalina",
+    "image": "ganado.webp",
+    "telephone": "+529515690990",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1ra Secc",
+      "addressLocality": "Santa María Atzompa",
+      "addressRegion": "Oaxaca",
+      "postalCode": "71220",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.1041284,
+      "longitude": -96.781118
+    }
+  }
+  </script>
 
 </head> 
 
@@ -50,25 +91,25 @@
     <h2>Nuestros servicios</h2>
 
     <article class="servicio-card"> <!-- tarjeta de servicio -->
-      <img src="crias.webp" alt="Ganado ovino de alta calidad en Rancho Santa Catalina">
+      <img loading="lazy" src="crias.webp" alt="Ganado ovino de alta calidad en Rancho Santa Catalina">
       <h3>Ganado Ovino </h3>
       <p>Criamos y seleccionamos cuidadosamente nuestro ganado en Santa María Atzompa, Oaxaca, bajo los más estrictos estándares de salud y bienestar animal, siempre con métodos completamente naturales y sostenibles, libres de aditivos artificiales.</p>
     </article>
 
     <article class="servicio-card">
-      <img src="cultivo.webp" alt="Alimento natural y balanceado para ganado">
+      <img loading="lazy" src="cultivo.webp" alt="Alimento natural y balanceado para ganado">
       <h3>Alimento Natural y Balanceado</h3>
       <p>Producimos alimento de calidad premium para ganado en Santa María Atzompa, utilizando únicamente ingredientes cultivados y procesados localmente en Oaxaca, asegurando que todo sea completamente natural y libre de químicos.</p>
     </article>
 
     <article class="servicio-card">
-      <img src="capacitacion.webp" alt="Capacitación y asesoría técnica ganadera">
+      <img loading="lazy" src="capacitacion.webp" alt="Capacitación y asesoría técnica ganadera">
       <h3>Capacitación y Asesoría Técnica</h3>
       <p>Transferimos el conocimiento práctico y la experiencia de manos oaxaqueñas expertas para mejorar su propia operación ganadera. Ofrecemos programas de capacitación prácticos y directos en Santa María Atzompa.</p>
     </article>
 
     <article class="servicio-card">
-      <img src="borregos.webp" alt="Genética de vanguardia en borregos">
+      <img loading="lazy" src="borregos.webp" alt="Genética de vanguardia en borregos">
       <h3>Nuestra Genética</h3>
       <p>No solo criamos borregos, le ponemos el corazón al campo. Nos enfocamos en trabajar la buena sangre de las razas Dorper y Katahdin, que destacan por dar muy buenas crías y adaptarse a todo. Con el trato de nuestra gente y un buen ojo para la cruza, logramos animales rústicos, bien hechos y de calidad comprobada; borregos sanos y criados de la manera más natural posible.</p>
     </article>
@@ -78,10 +119,16 @@
     <h2>Galería</h2>
 
     <div class="galeria-grid"> <!-- caja visual para acomodar las imagenes en cuadricula -->
-      <div class="galeria-item"><img src="ganado.webp" alt="Ganado del Rancho Santa Catalina"></div>
-      <div class="galeria-item"><img src="mama.webp" alt="Borrega con su cría en el rancho"></div>
-      <div class="galeria-item"><img src="bulto.webp" alt="Bultos de alimento almacenado"></div>
-      <div class="galeria-item"><img src="alimento.webp" alt="Alimento procesado para el ganado"></div>
+      <div class="galeria-item"><img loading="lazy" src="ganado.webp" alt="Ganado del Rancho Santa Catalina"></div>
+      <div class="galeria-item"><img loading="lazy" src="mama.webp" alt="Borrega con su cría en el rancho"></div>
+      <div class="galeria-item"><img loading="lazy" src="bulto.webp" alt="Bultos de alimento almacenado"></div>
+      <div class="galeria-item"><img loading="lazy" src="alimento.webp" alt="Alimento procesado para el ganado"></div>
+      <div class="galeria-item"><img loading="lazy" src="sombrero.webp" alt="Sombrero de trabajo en el rancho"></div>
+      <div class="galeria-item"><img loading="lazy" src="campo.webp" alt="Campo del Rancho Santa Catalina"></div>
+      <div class="galeria-item"><img loading="lazy" src="grupo.webp" alt="Grupo de borregos en el rancho"></div>
+      <div class="galeria-item"><img loading="lazy" src="hijos.webp" alt="Crías de borrego en el rancho"></div>
+      <div class="galeria-item"><img loading="lazy" src="pasto.webp" alt="Borrego en el pasto"></div>
+      <div class="galeria-item"><img loading="lazy" src="solo.webp" alt="Borrego del Rancho Santa Catalina"></div>
     </div>
   </section>
 
@@ -143,7 +190,7 @@
       </p>
       <p class="contact-item">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-        Sta. María Atzompa,Oax,México
+        1ra Secc, 71220 Santa María Atzompa, Oax.
       </p>
     </address>
   </section>
@@ -168,7 +215,6 @@
     <img src="" alt="" id="lightbox-img">
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script> <!-- librería del mapa -->
   <script src="script.js"></script>
 </body>
 </html>

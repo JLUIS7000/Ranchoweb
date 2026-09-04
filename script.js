@@ -48,14 +48,50 @@ lightbox.addEventListener('click', (e) => {
   }
 });
 
-// --- Mapa de ubicación (Leaflet + OpenStreetMap, gratis, sin necesitar API key) ---
+// --- Ubicación: coordenadas exactas del Rancho Santa Catalina (Google Maps) ---
+const ranchoCoords = [17.1041284, -96.781118];
+
+// El botón "Cómo llegar" no depende del mapa (es solo un link a Google Maps),
+// así que se arma de inmediato, sin esperar a que cargue nada más.
+const btnComoLlegar = document.querySelector('#btn-como-llegar');
+if (btnComoLlegar) {
+  btnComoLlegar.href = `https://www.google.com/maps/dir/?api=1&destination=${ranchoCoords[0]},${ranchoCoords[1]}`;
+}
+
+// --- Mapa interactivo (Leaflet + OpenStreetMap): carga diferida (lazy) ---
+// Ni el CSS ni el JS de Leaflet, ni las imágenes del mapa, se descargan hasta
+// que el usuario esté a punto de llegar a esta sección — igual que el video,
+// que tampoco descarga nada hasta que le dan play.
 const mapElement = document.querySelector('#map');
 
 if (mapElement) {
-  // Coordenadas de Santa María Atzompa, Oaxaca (centro del pueblo).
-  // Si tienes la ubicación exacta del rancho, reemplaza estos 2 números.
-  const ranchoCoords = [17.1041284, -96.781118];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        cargarLeaflet();
+        observer.unobserve(entry.target); // ya cumplió su función, se desconecta
+      }
+    });
+  }, { rootMargin: '300px' }); // empieza a cargar un poco antes de que sea 100% visible, para que no se note el retraso
 
+  observer.observe(mapElement);
+}
+
+function cargarLeaflet() {
+  // 1. Inyecta el CSS de Leaflet
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css';
+  document.head.appendChild(css);
+
+  // 2. Inyecta el JS de Leaflet; cuando termine de cargar, recién ahí se dibuja el mapa
+  const script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js';
+  script.onload = inicializarMapa;
+  document.body.appendChild(script);
+}
+
+function inicializarMapa() {
   const map = L.map('map').setView(ranchoCoords, 15); // 15 = nivel de zoom inicial
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -67,10 +103,4 @@ if (mapElement) {
     .addTo(map)
     .bindPopup('Rancho Santa Catalina')
     .openPopup();
-
-  // Botón "Cómo llegar": abre la ruta directo en Google Maps (o en la app, si el usuario está en el celular)
-  const btnComoLlegar = document.querySelector('#btn-como-llegar');
-  if (btnComoLlegar) {
-    btnComoLlegar.href = `https://www.google.com/maps/dir/?api=1&destination=${ranchoCoords[0]},${ranchoCoords[1]}`;
-  }
 }
