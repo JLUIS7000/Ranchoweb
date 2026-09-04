@@ -54,7 +54,7 @@ const mapElement = document.querySelector('#map');
 if (mapElement) {
   // Coordenadas de Santa María Atzompa, Oaxaca (centro del pueblo).
   // Si tienes la ubicación exacta del rancho, reemplaza estos 2 números.
-  const ranchoCoords = [17.1011, -96.7778];
+  const ranchoCoords = [17.1041284, -96.781118];
 
   const map = L.map('map').setView(ranchoCoords, 15); // 15 = nivel de zoom inicial
 
