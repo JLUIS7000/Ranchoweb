@@ -336,6 +336,26 @@ header {
   color: #555;
 }
 
+/* --- Ubicación (mapa) --- */
+.ubicacion {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.ubicacion h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+}
+
+#map {
+  height: 350px;
+  border-radius: 8px;
+  z-index: 1; /* el mapa maneja su propio z-index interno; esto evita que tape al header sticky */
+  margin-bottom: 1.5rem;
+}
+
 /* --- Contacto (footer) --- */
 footer {
   background-color: var(--color-text); /* casi negro cálido: máximo contraste, cierra la página con fuerza */

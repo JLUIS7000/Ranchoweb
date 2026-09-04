@@ -47,3 +47,30 @@ lightbox.addEventListener('click', (e) => {
     cerrarLightbox();
   }
 });
+
+// --- Mapa de ubicación (Leaflet + OpenStreetMap, gratis, sin necesitar API key) ---
+const mapElement = document.querySelector('#map');
+
+if (mapElement) {
+  // Coordenadas de Santa María Atzompa, Oaxaca (centro del pueblo).
+  // Si tienes la ubicación exacta del rancho, reemplaza estos 2 números.
+  const ranchoCoords = [17.1011, -96.7778];
+
+  const map = L.map('map').setView(ranchoCoords, 15); // 15 = nivel de zoom inicial
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19
+  }).addTo(map);
+
+  L.marker(ranchoCoords)
+    .addTo(map)
+    .bindPopup('Rancho Santa Catalina')
+    .openPopup();
+
+  // Botón "Cómo llegar": abre la ruta directo en Google Maps (o en la app, si el usuario está en el celular)
+  const btnComoLlegar = document.querySelector('#btn-como-llegar');
+  if (btnComoLlegar) {
+    btnComoLlegar.href = `https://www.google.com/maps/dir/?api=1&destination=${ranchoCoords[0]},${ranchoCoords[1]}`;
+  }
+}

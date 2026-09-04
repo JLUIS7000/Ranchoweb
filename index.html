@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rancho Santa Catalina</title> <!-- titulo  -->
   <link rel="stylesheet" href="styles.css">  <!-- archivo de los estilos en css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"> <!-- estilos del mapa (Leaflet) -->
 
 </head> 
 
@@ -30,6 +31,7 @@
         <li><a href="#servicios">Servicios</a></li>  <!-- opciones -->
         <li><a href="#galeria">Galería</a></li>
         <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -118,6 +120,12 @@
       <p class="autor">— María López</p>
     </article>
   </section>
+
+  <section class="ubicacion" id="ubicacion"> <!-- mapa con la ubicación del rancho -->
+    <h2>Encuéntranos</h2>
+    <div id="map"></div>
+    <a id="btn-como-llegar" href="#" target="_blank" rel="noopener" class="btn-cta">Cómo llegar</a>
+  </section>
 </main>
 
  <footer id="contacto">  <!-- seccion y la id de contacto -->
@@ -160,6 +168,7 @@
     <img src="" alt="" id="lightbox-img">
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script> <!-- librería del mapa -->
   <script src="script.js"></script>
 </body>
 </html>
