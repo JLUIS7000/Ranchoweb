@@ -2,9 +2,17 @@
 :root {
   --color-bg: #F7F4EC;      /* crema cálido, no blanco puro */
   --color-primary: #445E3C; /* verde olivo/pasto */
+  --color-primary-light: #5C7A52;
+  --color-primary-dark: #2E4029;
   --color-secondary: #8B5E34; /* marrón tierra */
+  --color-secondary-light: #A9764C;
+  --color-secondary-dark: #6B4626;
   --color-accent: #C9A227;  /* dorado, mismo tono que el logo */
+  --color-accent-light: #E0BC4A;
+  --color-accent-dark: #A67F1C;
   --color-text: #2B2A26;    /* casi negro, con calidez */
+  --color-text-light: #3D3B35;
+  --color-text-dark: #17160F;
   --color-light: #FFFFFF;
 }
 
@@ -35,7 +43,8 @@ a {
 /* --- Header --- */
 header {
   background-color: var(--color-light);
-  border-bottom: 1px solid #eee;
+  border-radius: 0 0 20px 20px; /* solo las esquinas de abajo: arriba pega contra el borde de la pantalla */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* reemplaza el borde: separa el header del contenido de forma más suave */
   position: sticky; /* --- fija la posicio del elemento --- */
   top: 0;
   z-index: 100; /* --- controlador que no se encimen --- */
@@ -133,7 +142,7 @@ header {
 
 .btn-cta {
   display: inline-block;
-  background-color: var(--color-accent);
+  background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent-dark)); /* degradado en vez de dorado plano */
   color: var(--color-text); /* texto oscuro sobre dorado se lee mejor que blanco sobre dorado */
   padding: 0.9rem 2rem;
   border-radius: 6px; /* --- rendondea el diseño y recntangulo recto --- */
@@ -179,7 +188,7 @@ header {
 
 .btn-ver-mas {
   display: inline-block;
-  margin: 0 1rem 1.25rem;
+  margin: 0 1rem 1.25rem; /* justo después del párrafo, sin empujarlo al fondo de la tarjeta */
   padding: 0.5rem 1.1rem;
   background: none;
   border: 2px solid var(--color-primary);
@@ -192,8 +201,9 @@ header {
 }
 
 .btn-ver-mas:hover {
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
   color: var(--color-light);
+  border-color: transparent;
 }
 
 /* --- Galería --- */
@@ -339,8 +349,10 @@ header {
 .video {
   padding: 4rem 1.5rem;
   text-align: center;
-  background-color: var(--color-secondary); /* marrón tierra: distingue esta franja de las demás */
+  background: linear-gradient(135deg, var(--color-secondary-light), var(--color-secondary-dark)); /* degradado en vez de color plano */
   color: var(--color-light);
+  margin: 0 1rem; /* deja ver el fondo crema a los lados, en vez de ir de borde a borde */
+  border-radius: 24px; /* panel flotante, no un bloque de esquinas rectas */
 }
 
 .video h2 {
@@ -372,8 +384,10 @@ header {
 /* --- Testimonios --- */
 .testimonios {
   padding: 3rem 1.5rem;
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark)); /* degradado en vez de color plano */
   color: var(--color-light); /* fondo verde oscuro, texto claro para contraste */
+  margin: 1.5rem 1rem; /* deja ver el fondo crema alrededor */
+  border-radius: 24px;
 }
 
 .testimonios h2 {
@@ -398,7 +412,7 @@ header {
 }
 
 .testimonio-card blockquote::before {
-  content: "“";
+  content: "\201C";
   font-size: 2.5rem;
   color: #ccc;
   position: absolute;
@@ -435,9 +449,9 @@ header {
   background-color: #e5e0d3; /* se ve mientras Leaflet carga, en vez de un rectángulo blanco vacío */
 }
 
-/* --- Contacto (footer) --- */
+/* --- Contacto (footer): PLANO, de borde a borde, sin panel flotante --- */
 footer {
-  background-color: var(--color-text); /* casi negro cálido: máximo contraste, cierra la página con fuerza */
+  background: linear-gradient(160deg, var(--color-text-light), var(--color-text-dark)); /* degradado sutil, casi negro cálido */
   color: var(--color-bg);
   padding: 3rem 1.5rem 1.5rem;
 }
@@ -477,6 +491,7 @@ footer {
 .redes {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1.5rem;
   margin: 2rem 0 1.5rem;
 }
@@ -586,11 +601,19 @@ footer {
 
   .header-container,
   .hero,
-  .video,
   .servicios,
-  .galeria,
-  .testimonios {
+  .galeria {
     max-width: 1100px;
     margin: 0 auto;
+  }
+
+  /* Este panel ya tiene su propio margen vertical (arriba/abajo) definido más arriba;
+     aquí solo centramos horizontalmente sin pisar ese margen. footer NO está aquí:
+     es un bloque plano de borde a borde, no un panel flotante. */
+  .video,
+  .testimonios {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
